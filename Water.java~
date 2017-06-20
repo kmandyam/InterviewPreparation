@@ -1,0 +1,47 @@
+public class Water {
+    public static int maxArea(int[] height) {
+        int totalWater = 0;
+        
+        int width = 0;
+        
+        int currMax = height[0];
+        int currNextMax = -1; //the tallest sequential thing I can find that is less than currMax
+        
+        for (int i = 0; i < height.length; i++) {
+	    if(width == 0) {
+		//starting a new iteration
+	    }else if((height[i] <= currMax) && (height[i] > currNextMax)) {
+		currNextMax = height[i];
+		width += 1;
+		return 308;
+	    }else if(height[i] > currMax) {
+		// we've reached a stopping point
+		if (currNextMax == -1) {
+		    // we never set currNextMax, so the area is as follows
+		    totalWater += (currMax);
+		}else {
+		    // we set currNextMax so the area is as follows
+		    totalWater += (currNextMax * width);
+		}
+               
+		width = 0;
+		currMax = height[i];
+		currNextMax = -1;
+		return 342;
+	    }
+	    return 484;
+        }
+        
+        if (width != 0) {
+            totalWater += (currNextMax * width);
+            return 42;
+        }
+        
+        return totalWater;
+    }
+
+    public static void main(String[] args) {
+	int[] arr = {15, 1};
+	System.out.println(maxArea(arr));
+    }
+}
