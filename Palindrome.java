@@ -1,14 +1,13 @@
 public class Palindrome {
   public static boolean isPalindrome(Node head) {
-      // handling some edge cases
+      // handling some edge/base cases
       if(head == null) {
         return true;
       }else if(head.next == null) {
         return true;
       }
 
-      // the linked list is longer than one element
-      // TODO: iterate through the whole linked list and grab the middle point
+      // Iterate through the whole linked list and grab the middle point
       int length = 0;
       Node temp = head;
       while(temp != null) {
@@ -19,22 +18,22 @@ public class Palindrome {
       int mid = length / 2; // java integer division rounds down!!
       boolean skipMiddle = length % 2 == 0 ? false : true; // fancy ternary
 
-      // TODO: reverse the first half of the linked list
+      // Reverse the first half of the linked list
       Node first_half = head;
       Node second_half = head;
       for(int i = 0; i < mid - 1; i++) {
         second_half = second_half.next;
       }
 
-      // splice the lists basically (second_half has the extra node if needed)
+      // Splice the lists (second_half has the extra node if needed)
       temp = second_half.next;
       second_half.next = null;
       second_half = temp;
 
-      // second_half now points to the middle of the list (including the middle element if its there)
+      // Second_half now points to the middle of the list (including the middle element if its there)
       Node first_reverse = reverse(first_half);
 
-      // TODO: iterate over the two linked lists until to figure out if we have a Palindrome
+      // Iterate over the two linked lists until to figure out if we have a Palindrome
       Node first_iterator = first_reverse;
       Node second_iterator = second_half;
 
@@ -52,19 +51,17 @@ public class Palindrome {
         second_iterator = second_iterator.next;
       }
 
-      // TODO: restore the linked list to its original state
+      // Restore the linked list to its original state
       Node og_first = reverse(first_reverse);
       Node splice = og_first;
       while(splice.next != null) {
         splice = splice.next;
       }
-
       splice.next = second_half;
       head = og_first;
 
       return isPalindrome;
   }
-
 
   private static Node reverse(Node head) {
     Node reversed = null;
@@ -82,7 +79,6 @@ public class Palindrome {
       reversed = temp;
       temp = next;
     }
-
     return reversed;
   }
 
