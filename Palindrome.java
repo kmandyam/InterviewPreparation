@@ -1,6 +1,4 @@
 public class Palindrome {
-  // --> 1 --> 2 --> 3 --> 4 -->
-
   public static boolean isPalindrome(Node head) {
       // handling some edge cases
       if(head == null) {
@@ -32,22 +30,6 @@ public class Palindrome {
       temp = second_half.next;
       second_half.next = null;
       second_half = temp;
-
-
-      // Node first_temp = first_half;
-      // Node second_temp = second_half;
-      //
-      // System.out.println("FIRST HALF");
-      // while(first_temp != null) {
-      //   System.out.println(first_temp.data);
-      //   first_temp = first_temp.next;
-      // }
-      //
-      // System.out.println("SECOND HALF");
-      // while(second_temp != null) {
-      //   System.out.println(second_temp.data);
-      //   second_temp = second_temp.next;
-      // }
 
       // second_half now points to the middle of the list (including the middle element if its there)
       Node first_reverse = reverse(first_half);
@@ -116,15 +98,14 @@ public class Palindrome {
   public static void main(String[] args) {
     Node head = new Node(1, null);
     head.next = new Node(2, null);
-    head.next.next = new Node(2, null);
-    head.next.next.next = new Node(1, null);
-    // head.next.next.next.next = new Node(5, null);
+    head.next.next = new Node(5, null);
+    head.next.next.next = new Node(2, null);
+    head.next.next.next.next = new Node(1, null);
 
-    // isPalindrome(head);
     System.out.println(isPalindrome(head));
-    // Node reversed = reverse(head);
-    Node temp = head;
 
+    // sanity check to make sure linked list is preserved
+    Node temp = head;
     while(temp != null) {
       System.out.println(temp.data);
       temp = temp.next;
