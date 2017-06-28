@@ -85,11 +85,24 @@ public class Palindrome {
 
 
   private static Node reverse(Node head) {
-    
+    Node reversed = null;
+    if(head == null) {
+      return null;
+    }else if(head.next == null) {
+      return head;
+    }
+
+    // the list is longer than one node
+    Node temp = head;
+    while(temp != null) {
+      Node next = temp.next;
+      temp.next = reversed;
+      reversed = temp;
+      temp = next;
+    }
+
+    return reversed;
   }
-
-
-
 
   private static class Node {
     public int data;
@@ -103,11 +116,19 @@ public class Palindrome {
   public static void main(String[] args) {
     Node head = new Node(1, null);
     head.next = new Node(2, null);
-    head.next.next = new Node(3, null);
-    head.next.next.next = new Node(4, null);
-    head.next.next.next.next = new Node(5, null);
+    head.next.next = new Node(2, null);
+    head.next.next.next = new Node(1, null);
+    // head.next.next.next.next = new Node(5, null);
 
-    isPalindrome(head);
+    // isPalindrome(head);
+    System.out.println(isPalindrome(head));
+    // Node reversed = reverse(head);
+    Node temp = head;
+
+    while(temp != null) {
+      System.out.println(temp.data);
+      temp = temp.next;
+    }
   }
 
 }
