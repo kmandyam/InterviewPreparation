@@ -1,5 +1,8 @@
 import java.util.*;
 public class PalindromePermutation {
+  // Alternatives: use a bit vector to reduce the space complexity here
+  // flip a switch to check if there are even or odd numbers of letters
+  // New Idea: don't use Java HashMap, use an array as a makeshift hash table to allow for easier iteration
 
   public static boolean isPalindromePermutation(String str) {
     // sanity checks
