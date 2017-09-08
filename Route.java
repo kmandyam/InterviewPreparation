@@ -5,15 +5,14 @@ public class Route {
   // create an array of LinkedLists to represent the D linked lists
   // recurse all the way down like in any binary tree traversal and increment the depths as I go, adding the values to each linkedlist
   public static void main(String[] args) {
-    Node left = new Node(1, null, null);
+    Node hey = new Node(0, null, null);
+    Node left = new Node(1, hey, null);
     Node right = new Node(3, null, null);
     Node root = new Node(2, left, right);
-    System.out.println(getDepth(root));
-    int[] h = {1, 2, 3, 4};
-    // System.out.println(Arrays.toString(h));
-    // pass(h);
-    // System.out.println(Arrays.toString(h));
-    System.out.println(returnDepthList(root));
+    LinkedList[] arrs = returnDepthList(root);
+    for(int i = 0; i < arrs.length; i++) {
+      System.out.println(Arrays.toString(arrs[i].toArray()));
+    }
   }
 
   public static LinkedList[] returnDepthList(Node root) {
@@ -29,6 +28,9 @@ public class Route {
     if(curr == null) {
       return;
     } else {
+      if(arrs[depth] == null) {
+        arrs[depth] = new LinkedList();
+      }
       arrs[depth].add(curr);
       bfs(curr.left, arrs, depth + 1);
       bfs(curr.right, arrs, depth + 1);
@@ -53,6 +55,10 @@ public class Route {
       this.data = data;
       this.left = left;
       this.right = right;
+    }
+
+    public String toString() {
+      return "" + data;
     }
   }
 
