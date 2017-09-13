@@ -10,8 +10,10 @@ public class Magic {
     int[] arr1 = {3, 4, 5 ,6, 9, 20};
     int[] arr2 = {-1, 1, 3, 6, 7};
     int[] arr3 = {-4, -3, -2, 3};
+    int[] arr4 = {2, 2, 2, 2, 2, 8, 10, 23, 25};
 
-    System.out.println(findMagic(arr3));
+    System.out.println(findMagic2(arr4, 0, arr4.length));
+
   }
 
 
@@ -31,6 +33,35 @@ public class Magic {
     }
 
     return -1;
+  }
+
+  // values not distinct?
+  // gotta search both the left and the right sides
+  // left side: search lo to whatever the number is index or the highest possible
+  // right side: search the next value or the value itself to the hi
+
+  public static int findMagic2(int[] arr, int lo, int hi) {
+    if(hi < lo) {
+      return -1;
+    }else {
+      int mid = lo + ((hi - lo)/2);
+      if(arr[mid] == mid) {
+        return mid;
+      }else{
+        int magicLeft = findMagic2(arr, lo, Math.min(mid - 1, arr[mid]));
+        int magicRight = findMagic2(arr, Math.max(mid + 1, arr[mid]), hi);
+
+        if(magicLeft != -1) {
+          return magicLeft;
+        }else{
+          if(magicRight != -1) {
+            return magicRight;
+          }
+          return -1;
+        }
+
+      }
+    }
   }
 
 }
