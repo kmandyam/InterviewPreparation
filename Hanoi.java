@@ -1,7 +1,8 @@
 // In the classic problem of the Towers of Hanoi, you have 3 towers and N disks of different sizes which can slide onto any tower.
 // the puzzle starts with disks sorted in ascending order of size from top to bottom.
 // One disk moved at a time
-// Slid off the top of one tower onto the next tower// Disk only placed on top of a larger disk
+// Slid off the top of one tower onto the next tower
+// Disk only placed on top of a larger disk
 
 
 import java.util.*;

@@ -7,6 +7,16 @@ public class Anagram {
     System.out.println(x);
   }
 
+  public static List<List<String>> anagramList(List<String> originals) {
+    Map<String, List<String>> hashMap = new HashMap<String, List<String>>();
+
+
+  }
+
+  public static String hashValue(int[] arr) {
+    
+  }
+
 
 
 
